@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SiteFlow - Generador de Sitemap</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="shortcut icon" href="../static/favicon.ico" type="image/x-icon"> 
+    <link rel="stylesheet" href="../static/style.css">
+    <style>
+        
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container mx-auto">
+            <h1 class="text-5xl font-extrabold">SiteFlow 🚀</h1>
+            <p class="text-lg">Genera rápidamente mapeos de sitios web con estilo y eficiencia</p>
+        </div>
+    </header>
+    <div class="container mx-auto main-container">
+        <div class="mt-8">
+            <h2 class="text-2xl">Ingresa la URL del sitio web:</h2>
+            <br>
+            <form id="sitemap-form" action="/generate_sitemap" method="POST">
+                <input type="url" name="url" placeholder="https://example.com" required>
+                <button type="submit" class="button button-primary mt-4">Generar Sitemap</button>
+            </form>
+            <hr class="border-gray-800 mt-4">
+            <div class="buttons-container">
+                <form action="/export_sitemap_txt" method="POST">
+                    <input type="hidden" name="url" id="txt-url">
+                    <button type="submit" class="button button-secondary">Exportar en TXT</button>
+                </form>
+                <form action="/export_sitemap_xml" method="POST">
+                    <input type="hidden" name="url" id="xml-url">
+                    <button type="submit" class="button button-secondary">Exportar en XML</button>
+                </form>
+            </div>
+            <div class="buttons-text">
+                SiteFlow - <a href="https://luigiadducci.netlify.app" class="underline">Luigi Adducci</a> &copy; 2024
+            </div>
+        </div>
+        <div class="sitemap-container mt-4">
+            <h2>Listado del sitemap:</h2>
+            <hr class="border-gray-800">
+            <ul id="sitemap-list"></ul>
+
+            <div class="pagination" id="pagination"></div>
+        </div>
+    </div>
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+    <script src="../static/script.js"></script>
+</body>
+</html>
